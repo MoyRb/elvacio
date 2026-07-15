@@ -10,7 +10,6 @@ import { SignalBoot } from "./SignalBoot";
 import { ANDRES_HOST_IMAGE, BRAND_ISOTYPE, BRAND_LOGOTYPE, IVAN_HOST_IMAGE, REFERENCE_SCENE } from "../config/site";
 
 const navItems = [
-  ["Home", "#home"],
   ["Última transmisión", "#ultima-transmision"],
   ["Anfitriones", "#anfitriones"],
   ["Quiénes somos", "#quienes-somos"],
