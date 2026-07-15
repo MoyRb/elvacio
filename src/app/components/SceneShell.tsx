@@ -25,22 +25,26 @@ export function SceneShell() {
       <SignalBoot />
       <header className="site-header">
         <a className="brand" href="#home" aria-label="El Vacío FM — inicio">
-          <Image
-            className="brand-mark"
-            src={BRAND_ISOTYPE}
-            alt=""
-            width={4913}
-            height={4068}
-            sizes="42px"
-          />
-          <Image
-            className="brand-logotype"
-            src={BRAND_LOGOTYPE}
-            alt="ELVACIO.FM"
-            width={3000}
-            height={3000}
-            sizes="165px"
-          />
+          <span className="brand-mark-frame" aria-hidden="true">
+            <Image
+              className="brand-mark"
+              src={BRAND_ISOTYPE}
+              alt=""
+              width={4913}
+              height={4068}
+              sizes="(max-width: 760px) 54px, (max-width: 1100px) 58px, 64px"
+            />
+          </span>
+          <span className="brand-logotype-frame">
+            <Image
+              className="brand-logotype"
+              src={BRAND_LOGOTYPE}
+              alt="ELVACIO.FM"
+              width={3000}
+              height={3000}
+              sizes="(max-width: 430px) 0px, (max-width: 760px) 178px, (max-width: 1100px) 204px, 220px"
+            />
+          </span>
         </a>
         <nav aria-label="Secciones principales">
           {navItems.map(([label, href]) => (
