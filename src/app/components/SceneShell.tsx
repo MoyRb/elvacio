@@ -7,7 +7,7 @@ import { HostPortal } from "./HostPortal";
 import { LatestTransmissionLoading } from "./LatestTransmissionLoading";
 import { LatestTransmissionServer } from "./LatestTransmissionServer";
 import { SignalBoot } from "./SignalBoot";
-import { ANDRES_HOST_IMAGE, IVAN_HOST_IMAGE, REFERENCE_SCENE, SITE_NAME } from "../config/site";
+import { ANDRES_HOST_IMAGE, BRAND_ISOTYPE, BRAND_LOGOTYPE, IVAN_HOST_IMAGE, REFERENCE_SCENE } from "../config/site";
 
 const navItems = [
   ["Home", "#home"],
@@ -24,7 +24,24 @@ export function SceneShell() {
     <main id="home" className="site-shell">
       <SignalBoot />
       <header className="site-header">
-        <a className="brand" href="#home">{SITE_NAME}</a>
+        <a className="brand" href="#home" aria-label="El Vacío FM — inicio">
+          <Image
+            className="brand-mark"
+            src={BRAND_ISOTYPE}
+            alt=""
+            width={4913}
+            height={4068}
+            sizes="42px"
+          />
+          <Image
+            className="brand-logotype"
+            src={BRAND_LOGOTYPE}
+            alt="ELVACIO.FM"
+            width={3000}
+            height={3000}
+            sizes="165px"
+          />
+        </a>
         <nav aria-label="Secciones principales">
           {navItems.map(([label, href]) => (
             <a href={href} key={href}>{label}</a>

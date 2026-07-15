@@ -29,7 +29,10 @@ a { color: inherit; }
 
 .site-shell { min-height: 100vh; overflow-x: clip; background: radial-gradient(circle at 50% 20%, rgba(127,165,166,.16), transparent 32%), var(--void-black); }
 .site-header { position: sticky; top: 0; z-index: 20; display: grid; grid-template-columns: auto 1fr auto; gap: 1rem; align-items: center; padding: .8rem clamp(1rem, 3vw, 2rem); background: rgba(5,5,5,.88); border-bottom: 1px solid var(--line); backdrop-filter: blur(2px); }
-.brand { font-family: var(--font-michroma); text-decoration: none; letter-spacing: .08em; }
+.brand { display: inline-flex; align-items: center; gap: 10px; min-width: 0; text-decoration: none; }
+.brand img { display: block; object-fit: contain; }
+.brand-mark { width: clamp(36px, 3vw, 42px); height: clamp(36px, 3vw, 42px); }
+.brand-logotype { width: clamp(130px, 11vw, 165px); height: 42px; }
 nav { display: flex; flex-wrap: wrap; justify-content: center; gap: .35rem; font-family: var(--font-oxanium); }
 nav a, .terminal-button { border: 1px solid var(--line); background: #11100e; color: var(--overexposed); padding: .55rem .7rem; text-decoration: none; text-transform: uppercase; font: 700 .75rem/1 var(--font-oxanium); letter-spacing: .06em; }
 nav a:hover, nav a:focus-visible, .terminal-button:hover, .terminal-button:focus-visible { outline: 2px solid var(--tungsten); color: var(--tungsten); }
@@ -92,6 +95,7 @@ p { color: var(--concrete-light); line-height: 1.65; }
 
 @media (max-width: 760px) {
   html { scroll-behavior: auto; }
+  .brand-logotype { width: 112px; height: 34px; }
   .site-header { position: relative; }
   nav { overflow-x: auto; flex-wrap: nowrap; justify-content: start; padding-bottom: .25rem; }
   nav a, .terminal-button { min-height: 44px; }
@@ -107,4 +111,8 @@ p { color: var(--concrete-light); line-height: 1.65; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .001ms !important; }
   .scene-background, .host-stage, .host-portal:hover .host-stage, .host-portal:focus-visible .host-stage { transform: none; }
+}
+
+@media (max-width: 430px) {
+  .brand-logotype { display: none; }
 }
