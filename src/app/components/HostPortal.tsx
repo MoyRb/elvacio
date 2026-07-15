@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type HostPortalProps = {
@@ -6,13 +7,21 @@ type HostPortalProps = {
   href: string;
   label: string;
   description: string;
+  imageSrc: string;
 };
 
-export function HostPortal({ name, side, href, label, description }: HostPortalProps) {
+export function HostPortal({ name, side, href, label, description, imageSrc }: HostPortalProps) {
   return (
     <Link className={`host-portal host-portal--${side}`} href={href} aria-label={`${name}: ${label}`}>
-      <span className="host-signal" aria-hidden="true">
-        <span className="host-body" />
+      <span className="host-stage" aria-hidden="true">
+        <Image
+          className="host-image"
+          src={imageSrc}
+          alt=""
+          fill
+          sizes="(max-width: 760px) 78vw, 24vw"
+          priority
+        />
       </span>
       <span className="host-copy">
         <strong>{name}</strong>

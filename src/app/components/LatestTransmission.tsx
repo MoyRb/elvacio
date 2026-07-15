@@ -1,27 +1,23 @@
-"use client";
+import { YOUTUBE_CHANNEL_URL } from "@/lib/youtube/constants";
+import type { LatestYouTubeResult } from "@/lib/youtube/types";
+import { TransmissionIframe } from "./TransmissionIframe";
 
-import { LATEST_YOUTUBE_URL, LATEST_YOUTUBE_VIDEO_ID } from "../config/site";
+type LatestTransmissionProps = {
+  result: LatestYouTubeResult;
+};
 
-function getEmbedSrc() {
-  if (LATEST_YOUTUBE_VIDEO_ID) {
-    return `https://www.youtube-nocookie.com/embed/${LATEST_YOUTUBE_VIDEO_ID}?rel=0`;
-  }
+function formatDate(value: string) {
+  if (!value) return "Fecha no disponible";
 
-  if (LATEST_YOUTUBE_URL) {
-    try {
-      const url = new URL(LATEST_YOUTUBE_URL);
-      const videoId = url.searchParams.get("v") || url.pathname.split("/").filter(Boolean).at(-1);
-      return videoId ? `https://www.youtube-nocookie.com/embed/${videoId}?rel=0` : "";
-    } catch {
-      return "";
-    }
-  }
-
-  return "";
+  return new Intl.DateTimeFormat("es-MX", {
+    dateStyle: "medium",
+    timeZone: "UTC",
+  }).format(new Date(value));
 }
 
-export function LatestTransmission() {
-  const embedSrc = getEmbedSrc();
+export function LatestTransmission({ result }: LatestTransmissionProps) {
+  const video = result.status === "ready" ? result.video : null;
+  const youtubeUrl = video ? `https://www.youtube.com/watch?v=${video.videoId}` : YOUTUBE_CHANNEL_URL;
 
   return (
     <section className="transmission-panel" id="ultima-transmision" aria-labelledby="latest-title">
@@ -29,24 +25,24 @@ export function LatestTransmission() {
         <span>ÚLTIMA TRANSMISIÓN</span>
         <span className="frequency">FM 00.0</span>
       </div>
-      <h2 id="latest-title">Señal central</h2>
+      <h2 id="latest-title">{video?.title ?? "SEÑAL NO DISPONIBLE"}</h2>
+      <p className="transmission-meta">
+        {video ? `${formatDate(video.publishedAt)} / ${video.channelTitle}` : "Pérdida de señal con el canal oficial"}
+      </p>
       <div className="video-frame">
-        {embedSrc ? (
-          <iframe
-            title="Última transmisión de El Vacío en YouTube"
-            src={embedSrc}
-            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            onPointerDown={() => window.dispatchEvent(new Event("elvacio:video-play"))}
-            onFocus={() => window.dispatchEvent(new Event("elvacio:video-play"))}
-          />
+        {video ? (
+          <TransmissionIframe title={`Última transmisión de El Vacío: ${video.title}`} videoId={video.videoId} />
         ) : (
           <div className="video-standby" role="status">
-            <span>ESPERANDO ID OFICIAL DE YOUTUBE</span>
-            <strong>NO SIGNAL / CONFIGURAR EN site.ts</strong>
+            <span>SEÑAL NO DISPONIBLE</span>
+            <strong>{result.status === "unavailable" ? result.reason : ""}</strong>
           </div>
         )}
       </div>
+      {video?.description ? <p className="transmission-description">{video.description}</p> : null}
+      <a className="youtube-link" href={youtubeUrl} target="_blank" rel="noreferrer">
+        Abrir en YouTube
+      </a>
     </section>
   );
 }
