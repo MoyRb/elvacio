@@ -15,3 +15,13 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Future community architecture should consider Supabase Auth, profiles, posts, categories, comments/replies, reactions, suggestions, moderation, reports, roles, admin, and Row Level Security, but do not add credentials or fake keys.
 - Respect `prefers-reduced-motion` for all animations.
 - Avoid generic purple-blue gradients, glassmorphism, SaaS cards, soft corporate shadows, unjustified pill buttons, generic abstract backgrounds, excessive neon, and emoji iconography.
+
+# Homepage scene requirements
+
+- Andrés and Iván are mandatory official homepage assets and must remain visually present in the scene.
+- Andrés links to Transmisiones; Iván links to Comunidad.
+- Never regenerate, replace, trace, or substitute the host characters with placeholders, stock images, silhouettes, avatars, icons, or external photographs.
+- The central content must use the latest public video from `@elvaciofm` through a server-side YouTube Data API integration.
+- The YouTube API key must never be exposed to browser/client bundles.
+- Video and ambient audio must never autoplay.
+- The homepage is designed as an atmospheric scene, not a traditional landing page.

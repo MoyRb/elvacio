@@ -1,11 +1,13 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import { AmbientAudioControl } from "./AmbientAudioControl";
 import { BroadcastStatus } from "./BroadcastStatus";
 import { ContactTerminal } from "./ContactTerminal";
 import { HostPortal } from "./HostPortal";
-import { LatestTransmission } from "./LatestTransmission";
+import { LatestTransmissionLoading } from "./LatestTransmissionLoading";
+import { LatestTransmissionServer } from "./LatestTransmissionServer";
 import { SignalBoot } from "./SignalBoot";
-import { REFERENCE_SCENE, SITE_NAME } from "../config/site";
+import { ANDRES_HOST_IMAGE, IVAN_HOST_IMAGE, REFERENCE_SCENE, SITE_NAME } from "../config/site";
 
 const navItems = [
   ["Home", "#home"],
@@ -47,14 +49,18 @@ export function SceneShell() {
             href="#transmisiones"
             label="Entrar a Transmisiones"
             description="Archivo de episodios"
+            imageSrc={ANDRES_HOST_IMAGE}
           />
-          <LatestTransmission />
+          <Suspense fallback={<LatestTransmissionLoading />}>
+            <LatestTransmissionServer />
+          </Suspense>
           <HostPortal
             name="Iván"
             side="right"
             href="#comunidad"
             label="Entrar a Comunidad"
             description="Foro en preparación"
+            imageSrc={IVAN_HOST_IMAGE}
           />
         </div>
       </section>
