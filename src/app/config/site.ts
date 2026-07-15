@@ -9,3 +9,6 @@ export const CRT_REFERENCE = "/images/references/television-ctr.jpg";
 
 export const ANDRES_HOST_IMAGE = "/assets/host/andres.png";
 export const IVAN_HOST_IMAGE = "/assets/host/ivan.png";
+
+export const BRAND_ISOTYPE = "/branding/vaciofm_isonegro.png";
+export const BRAND_LOGOTYPE = "/branding/Logo_letras_prueba.png";
