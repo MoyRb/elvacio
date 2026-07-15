@@ -19,9 +19,16 @@ This version has breaking changes — APIs, conventions, and file structure may 
 # Homepage scene requirements
 
 - Andrés and Iván are mandatory official homepage assets and must remain visually present in the scene.
-- Andrés links to Transmisiones; Iván links to Comunidad.
+- Andrés opens the official YouTube channel in a new tab; Iván links internally to `/comunidad`.
 - Never regenerate, replace, trace, or substitute the host characters with placeholders, stock images, silhouettes, avatars, icons, or external photographs.
 - The central content must use the latest public video from `@elvaciofm` through a server-side YouTube Data API integration.
 - The YouTube API key must never be exposed to browser/client bundles.
 - Video and ambient audio must never autoplay.
 - The homepage is designed as an atmospheric scene, not a traditional landing page.
+
+# Comunidad MVP
+
+- `/comunidad` is a public Supabase-backed guestbook/forum with no accounts in this phase.
+- Use only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`; never add or use `service_role`.
+- Public visitors may only read visible posts and insert valid posts through RLS. Do not add public UPDATE or DELETE policies.
+- Keep future hardening documented: rate limiting, CAPTCHA, authentication, and advanced moderation.

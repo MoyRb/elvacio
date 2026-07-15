@@ -2,82 +2,38 @@
 
 ## Fase 1 — Escena oficial inicial
 
-### Alcance
-
-- Auditoría del repositorio y assets disponibles.
-- Reglas permanentes en `AGENTS.md`.
-- Documentación de dirección visual y arquitectura.
-- Sistema tipográfico con `next/font`.
-- Tokens visuales globales.
-- Componentes base de homepage.
-- Escena principal funcional con Andrés izquierda, transmisión al centro e Iván derecha.
-- Embed YouTube configurable sin inventar URL.
-- Accesos a Transmisiones y Comunidad.
-- Control de audio ambiental sin autoplay.
-- Responsividad inicial.
-- `prefers-reduced-motion`.
-- Metadatos básicos y correo oficial.
-
-### Criterios de aceptación
-
-- `npm run lint` pasa.
-- `npx tsc --noEmit` pasa.
-- `npm run build` pasa.
-- La página carga en 1440×900, 1024×768 y 390×844 sin overflow horizontal.
-- No hay autoplay de audio.
-- El control de ambiente es visible y recuerda preferencia en `sessionStorage`.
-- El video principal reduce o pausa el ambiente cuando el usuario inicia reproducción.
-- Navegación por teclado alcanza menú, accesos de anfitriones, video/contacto y control de ambiente.
-- `prefers-reduced-motion` reduce animaciones y transiciones.
+Completada: escena principal con Andrés, transmisión central, Iván, branding, contacto, control de ambiente sin autoplay, responsividad y `prefers-reduced-motion`.
 
 ## Fase 2 — Assets oficiales de anfitriones
 
-### Alcance
+Completada: se conservan los assets oficiales de Andrés e Iván sin placeholders, imágenes externas ni sustituciones.
 
-- Agregar imágenes oficiales de cuerpo completo para Andrés e Iván en `/public/assets/hosts`.
-- Ajustar recortes, parallax y estados hover alrededor de los archivos definitivos.
+## Fase 3 — Transmisiones dinámicas
 
-### Criterios de aceptación
+Completada: la homepage obtiene el último video público de `@elvaciofm` desde YouTube Data API en servidor. Andrés abre el canal oficial `https://www.youtube.com/@elvaciofm` en una pestaña nueva.
 
-- No se usan placeholders ni imágenes externas.
-- Las imágenes no se deforman en escritorio, tableta ni móvil.
-- Los accesos siguen siendo usables con teclado y tacto.
+## Fase 4 — Comunidad MVP
 
-## Fase 3 — Transmisiones
+Completada: `/comunidad` funciona como foro público ligero tipo guestbook con estética de portal web de principios de los 2000.
 
-### Alcance
+### Alcance implementado
 
-- Archivo visible de episodios bajo la sección **Transmisiones**.
-- Modelo de datos estático o CMS futuro sin inventar episodios.
-
-### Criterios de aceptación
-
-- Los episodios reales se listan con fuente verificable.
-- La UI mantiene el lenguaje de terminal/radio sin volverse SaaS.
-
-## Fase 4 — Comunidad
-
-### Alcance
-
-- Diseño técnico de Supabase Auth, perfiles, publicaciones, categorías, comentarios, reacciones, reportes, roles y RLS.
-- Implementación progresiva de foro.
+- Navegación interna a `/comunidad` desde Iván, el menú principal y la preview de Comunidad.
+- Formulario con apodo, tipo de transmisión, mensaje y honeypot `website`.
+- Validación en frontend, Server Action y base de datos.
+- Lectura de publicaciones visibles desde Server Component.
+- Inserción pública sin cuentas usando Supabase y RLS.
+- Estado offline cuando Supabase no está configurado.
+- Migración versionada `supabase/migrations/001_create_forum_posts.sql`.
 
 ### Criterios de aceptación
 
-- RLS activa antes de exponer datos de usuario.
-- Sin claves públicas falsas ni secretos en repositorio.
-- Moderación contemplada desde el esquema inicial.
+- RLS activa antes de exponer datos.
+- Sin `service_role`, claves reales ni credenciales ficticias.
+- Sin UPDATE ni DELETE públicos.
+- Sin HTML de usuario ni `dangerouslySetInnerHTML`.
+- Pendientes documentados: rate limiting, CAPTCHA, autenticación y moderación avanzada.
 
 ## Fase 5 — Audio e inmersión avanzada
 
-### Alcance
-
-- Integrar archivo oficial de ambiente.
-- Afinar mezcla con el embed principal.
-- Añadir transiciones de pérdida/recuperación de señal si no degradan rendimiento.
-
-### Criterios de aceptación
-
-- Nunca hay autoplay.
-- No se reproducen dos fuentes sonoras simultáneamente.
-- La experiencia reducida por movimiento sigue estable.
+Pendiente: integrar archivo oficial de ambiente aprobado y afinar mezcla/transiciones sin autoplay ni degradar rendimiento.

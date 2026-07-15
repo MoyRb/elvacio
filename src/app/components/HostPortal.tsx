@@ -8,11 +8,16 @@ type HostPortalProps = {
   label: string;
   description: string;
   imageSrc: string;
+  external?: boolean;
+  target?: string;
+  rel?: string;
 };
 
-export function HostPortal({ name, side, href, label, description, imageSrc }: HostPortalProps) {
-  return (
-    <Link className={`host-portal host-portal--${side}`} href={href} aria-label={`${name}: ${label}`}>
+export function HostPortal({ name, side, href, label, description, imageSrc, external = false, target, rel }: HostPortalProps) {
+  const className = `host-portal host-portal--${side}`;
+  const ariaLabel = `${name}: ${label}`;
+  const content = (
+    <>
       <span className="host-stage" aria-hidden="true">
         <Image
           className="host-image"
@@ -28,6 +33,20 @@ export function HostPortal({ name, side, href, label, description, imageSrc }: H
         <span>{label}</span>
         <small>{description}</small>
       </span>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a className={className} href={href} target={target} rel={rel} aria-label={ariaLabel}>
+        {content}
+      </a>
+    );
+  }
+
+  return (
+    <Link className={className} href={href} aria-label={ariaLabel}>
+      {content}
     </Link>
   );
 }
