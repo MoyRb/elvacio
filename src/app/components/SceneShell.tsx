@@ -14,7 +14,7 @@ const navItems = [
   ["Anfitriones", "#anfitriones"],
   ["Quiénes somos", "#quienes-somos"],
   ["Transmisiones", "#transmisiones"],
-  ["Comunidad", "#comunidad"],
+  ["Comunidad", "/comunidad"],
   ["Contacto", "#contacto"],
 ];
 
@@ -66,9 +66,12 @@ export function SceneShell() {
           <HostPortal
             name="Andrés"
             side="left"
-            href="#transmisiones"
-            label="Entrar a Transmisiones"
-            description="Archivo de episodios"
+            href="https://www.youtube.com/@elvaciofm"
+            label="VER TRANSMISIONES"
+            description="Canal oficial en YouTube"
+            external
+            target="_blank"
+            rel="noopener noreferrer"
             imageSrc={ANDRES_HOST_IMAGE}
           />
           <Suspense fallback={<LatestTransmissionLoading />}>
@@ -77,9 +80,9 @@ export function SceneShell() {
           <HostPortal
             name="Iván"
             side="right"
-            href="#comunidad"
-            label="Entrar a Comunidad"
-            description="Foro en preparación"
+            href="/comunidad"
+            label="ENTRAR A COMUNIDAD"
+            description="Opiniones y sugerencias"
             imageSrc={IVAN_HOST_IMAGE}
           />
         </div>
@@ -101,7 +104,7 @@ export function SceneShell() {
         <article className="terminal-section" id="comunidad">
           <p className="section-kicker">Comunidad</p>
           <h2>Foro en preparación</h2>
-          <p>La comunidad futura contemplará perfiles, publicaciones, categorías, comentarios, reacciones, sugerencias, moderación, reportes, roles y Row Level Security.</p>
+          <p>La comunidad abre como foro público para opiniones y sugerencias. <a href="/comunidad">Entrar a /comunidad</a>.</p>
         </article>
         <ContactTerminal />
       </section>
