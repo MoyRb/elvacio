@@ -62,7 +62,10 @@ p { color: var(--concrete-light); line-height: 1.65; }
 .host-portal:hover, .host-portal:focus-visible { outline: 2px solid var(--muted-cyan); outline-offset: 4px; }
 .host-stage { position: absolute; inset: 0 2% 5.8rem; z-index: 1; animation: host-parallax 8s ease-in-out infinite alternate; transition: transform .35s ease, filter .35s ease; }
 .host-image { object-fit: contain; object-position: center bottom; filter: drop-shadow(0 22px 18px rgba(0,0,0,.52)) drop-shadow(0 0 12px rgba(127,165,166,.16)); }
-.host-portal:hover .host-stage, .host-portal:focus-visible .host-stage { transform: translate3d(0, -8px, 0) scale(1.018); filter: contrast(1.04) saturate(1.04); }
+.host-image--animated { transform-origin: center bottom; will-change: transform; }
+.host-portal--left .host-image--animated { transform: translate3d(var(--andres-gif-x, 0), var(--andres-gif-y, 0), 0) scale(var(--andres-gif-scale, 2.78)); }
+.host-portal--right .host-image--animated { transform: translate3d(var(--ivan-gif-x, 0), var(--ivan-gif-y, 0), 0) scale(var(--ivan-gif-scale, 2.74)); }
+.host-portal:hover .host-stage, .host-portal:focus-visible .host-stage { transform: translate3d(0, -4px, 0) scale(1.006); filter: contrast(1.04) saturate(1.04); }
 .host-copy { position: relative; z-index: 2; display: grid; gap: .35rem; padding: .8rem; background: rgba(5,5,5,.78); border: 1px solid var(--line); font-family: var(--font-oxanium); }
 .host-copy strong { font-family: var(--font-michroma); }
 .host-copy small { color: var(--tungsten); text-transform: uppercase; }
@@ -98,6 +101,8 @@ p { color: var(--concrete-light); line-height: 1.65; }
   nav { grid-column: 1 / -1; justify-content: start; }
   .stage-grid { grid-template-columns: 1fr 1.25fr 1fr; }
   .host-portal { min-height: 420px; }
+  .host-portal--left .host-image--animated { --andres-gif-scale: 2.58; --andres-gif-y: 1px; }
+  .host-portal--right .host-image--animated { --ivan-gif-scale: 2.54; --ivan-gif-y: 1px; }
   .content-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
@@ -116,6 +121,8 @@ p { color: var(--concrete-light); line-height: 1.65; }
   .transmission-panel { order: -1; }
   .host-portal { min-height: 300px; }
   .host-stage { inset: 0 8% 5.8rem; }
+  .host-portal--left .host-image--animated { --andres-gif-scale: 1.34; --andres-gif-y: 1px; }
+  .host-portal--right .host-image--animated { --ivan-gif-scale: 1.31; --ivan-gif-y: 1px; }
   .content-grid { grid-template-columns: 1fr; }
 }
 
