@@ -7,7 +7,7 @@ import { HostPortal } from "./HostPortal";
 import { LatestTransmissionLoading } from "./LatestTransmissionLoading";
 import { LatestTransmissionServer } from "./LatestTransmissionServer";
 import { SignalBoot } from "./SignalBoot";
-import { ANDRES_HOST_IMAGE, BRAND_ISOTYPE, BRAND_LOGOTYPE, IVAN_HOST_IMAGE, REFERENCE_SCENE } from "../config/site";
+import { ANDRES_HOST_ANIMATION, ANDRES_HOST_IMAGE, BRAND_ISOTYPE, BRAND_LOGOTYPE, IVAN_HOST_ANIMATION, IVAN_HOST_IMAGE, REFERENCE_SCENE } from "../config/site";
 
 const navItems = [
   ["Última transmisión", "#ultima-transmision"],
@@ -73,6 +73,7 @@ export function SceneShell() {
             target="_blank"
             rel="noopener noreferrer"
             imageSrc={ANDRES_HOST_IMAGE}
+            animationSrc={ANDRES_HOST_ANIMATION}
           />
           <Suspense fallback={<LatestTransmissionLoading />}>
             <LatestTransmissionServer />
@@ -84,6 +85,7 @@ export function SceneShell() {
             label="ENTRAR A COMUNIDAD"
             description="Opiniones y sugerencias"
             imageSrc={IVAN_HOST_IMAGE}
+            animationSrc={IVAN_HOST_ANIMATION}
           />
         </div>
       </section>

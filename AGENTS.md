@@ -26,6 +26,18 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - Video and ambient audio must never autoplay.
 - The homepage is designed as an atmospheric scene, not a traditional landing page.
 
+
+# Official host media
+
+- `/public/assets/host/andres.png` and `/public/assets/host/ivan.png` are the official static PNG states for Andrés and Iván.
+- `/public/assets/host/andres-giro.gif` and `/public/assets/host/ivan-giro.gif` are the official animated GIF states for Andrés and Iván.
+- Never regenerate, substitute, trace, convert, edit, or replace the official host PNG or GIF files.
+- Andrés continues to link to the official YouTube channel in a new tab: `https://www.youtube.com/@elvaciofm`.
+- Iván continues to link internally to `/comunidad`.
+- Host GIFs play only on hover or keyboard focus; there is no autoplay.
+- `prefers-reduced-motion: reduce` uses only the static PNG states.
+- On touch devices, the first tap must always navigate and must not be consumed by animation.
+
 # Comunidad MVP
 
 - `/comunidad` is a public Supabase-backed guestbook/forum with no accounts in this phase.
